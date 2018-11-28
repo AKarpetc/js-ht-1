@@ -21,9 +21,8 @@ for (let i = 0; i < 2; i++) {
     expenses[ccompulsoryConsumption] = total;
     appData.expenses = expenses;
     alert(
-        "Дневной бюджет:" + (
-            appData.money - appData.expenses[ccompulsoryConsumption]
-        ) / 30
+        "Дневной бюджет:" +
+        (appData.money - appData.expenses[ccompulsoryConsumption]) / 30
     );
 }
 console.log(appData);
