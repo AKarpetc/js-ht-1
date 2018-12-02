@@ -1,5 +1,8 @@
 let menuItems = document.querySelectorAll(".menu .menu-item");
 let menu = document.querySelector(".menu");
+let title=document.querySelector(".title");
+let adv=document.querySelector(".adv");
+let propmptDiv=document.querySelector("#prompt");
 var numbers = [{
         name:"Первый пункт",
         number: 1
@@ -42,3 +45,7 @@ console.log(newElement);
 numbers.forEach(element => {
     menu.append(element.element);
 });
+title.innerHTML="Мы продаем только <b>подлинную</b> технику Apple";
+adv.remove();
+propmptDiv.innerHTML= prompt("Как вы относитесь к технике apple?");
+
