@@ -10,6 +10,7 @@ let optionalApp = buttons[1];
 let calcDayly = buttons[2];
 
 
+
 let optional = document.querySelectorAll(".optionalexpenses-item");
 
 let chooseIncome = document.querySelector(".choose-income");
@@ -17,13 +18,3 @@ let choosePercent = document.querySelector(".choose-percent");
 let savings = document.querySelector("#savings");
 
 let dateFields = document.querySelectorAll(".time-data input[class$='-value']");
-
-let queryLabel = document.querySelectorAll("label");
-
-console.log(queryLabel);
-
-queryLabel.forEach(el => {
-
-    el.style.fontSize = "24px";
-
-});
