@@ -2,94 +2,100 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Tabs
   "use strict";
+
   let tab = document.querySelectorAll(".info-header-tab"),
     info = document.querySelector(".info-header"),
     tabContent = document.querySelectorAll(".info-tabcontent");
 
-  function hideTabContent(a) {
-    for (let i = a; i < tabContent.length; i++) {
-      tabContent[i].classList.remove("show");
-      tabContent[i].classList.add("hide");
-    }
-  }
-  hideTabContent(1);
+  class AdModel {
+    constructor() {
 
-  function showTabContent(b) {
-    if (tabContent[b].classList.contains("hide")) {
-      tabContent[b].classList.remove("hide");
-      tabContent[b].classList.add("show");
-    }
-  }
+      this.deadline = '2019-01-01';
 
-  info.addEventListener("click", function (event) {
-    let target = event.target;
-    if (target && target.classList.contains("info-header-tab")) {
-      for (let i = 0; i < tab.length; i++) {
-        if (target == tab[i]) {
-          hideTabContent(0);
-          showTabContent(i);
-          break;
+    }
+    showalert() {
+      alert();
+    }
+    hideTabContent(a) {
+      for (let i = a; i < tabContent.length; i++) {
+        tabContent[i].classList.remove("show");
+        tabContent[i].classList.add("hide");
+      }
+    }
+
+    showTabContent(b) {
+      if (tabContent[b].classList.contains("hide")) {
+        tabContent[b].classList.remove("hide");
+        tabContent[b].classList.add("show");
+      }
+    }
+
+    showTabEvent(event) {
+      let target = event.target;
+      if (target && target.classList.contains("info-header-tab")) {
+        for (let i = 0; i < tab.length; i++) {
+          if (target == tab[i]) {
+            this.hideTabContent(0);
+            this.showTabContent(i);
+            break;
+          }
         }
       }
     }
-  });
 
+    getTimeRemaining(endtime) {
+      let t = Date.parse(endtime) - Date.parse(new Date());
+      let seconds = Math.floor((t / 1000) % 60);
+      let minutes = Math.floor((t / 1000 / 60) % 60);
+      let hours = Math.floor((t / 1000 / 60 / 60));
 
-
-  //Timer
-  let deadline = '2019-01-01';
-
-  function getTimeRemaining(endtime) {
-
-    let t = Date.parse(endtime) - Date.parse(new Date());
-    let seconds = Math.floor((t / 1000) % 60);
-    let minutes = Math.floor((t / 1000 / 60) % 60);
-    let hours = Math.floor((t / 1000 / 60 / 60));
-
-    return {
-      total: t,
-      hours: hours,
-      minute: minutes,
-      seconds: seconds
-    };
-  }
-
-  function setClock(id, endtime) {
-
-    let timer = document.getElementById(id),
-      hours = timer.querySelector('.hours'),
-      minute = timer.querySelector('.minutes'),
-      seconds = timer.querySelector('.seconds'),
-      timeInterval = setInterval(UpdateClock, 1);
-
-
-    function UpdateClock() {
-
-      let t = getTimeRemaining(endtime);
-      if (t.total < 0) {
-        t.hours = 0;
-        t.minute = 0;
-        t.seconds = 0;
-
-      }
-
-      hours.textContent = t.hours.toString().length == 1 ? '0' + t.hours.toString() : t.hours;
-      minute.textContent = t.minute.toString().length == 1 ? '0' + t.minute : t.minute;
-      seconds.textContent = t.seconds.toString().length == 1 ? '0' + t.seconds : t.seconds;
-
-
-
-      if (t.total <= 0) {
-
-        clearInterval(timeInterval);
-      }
+      return {
+        total: t,
+        hours: hours,
+        minute: minutes,
+        seconds: seconds
+      };
 
     }
 
+    setClock(id, endtime) {
 
+      let timer = document.getElementById(id),
+        hours = timer.querySelector('.hours'),
+        minute = timer.querySelector('.minutes'),
+        seconds = timer.querySelector('.seconds'),
+        timeInterval = setInterval(UpdateClock, 1);
+
+      function UpdateClock() {
+
+        let t = admodel.getTimeRemaining(endtime);
+        if (t.total < 0) {
+          t.hours = 0;
+          t.minute = 0;
+          t.seconds = 0;
+
+        }
+
+        hours.textContent = t.hours.toString().length == 1 ? '0' + t.hours.toString() : t.hours;
+        minute.textContent = t.minute.toString().length == 1 ? '0' + t.minute : t.minute;
+        seconds.textContent = t.seconds.toString().length == 1 ? '0' + t.seconds : t.seconds;
+
+        if (t.total <= 0) {
+
+          clearInterval(timeInterval);
+        }
+      }
+    }
   }
 
-  setClock('timer', deadline);
+  var admodel = new AdModel();
+
+  admodel.hideTabContent(1);
+
+  info.addEventListener("click",(e)=>{admodel.showTabEvent(e);});
+
+  admodel.setClock('timer', admodel.deadline);
+
 
   //modal window
   var more = document.querySelector(".more"),
@@ -97,10 +103,8 @@ window.addEventListener("DOMContentLoaded", () => {
     close = document.querySelector(".popup-close"),
     descriptionButtons = document.querySelectorAll(".description-btn, .more");
 
-  console.log(descriptionButtons);
-
-
   descriptionButtons.forEach(element => {
+
     element.addEventListener('click', function () {
       overlay.style.display = 'block';
       this.classList.add('more-splash');
@@ -110,7 +114,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  close.addEventListener('click', function () {
+  close.addEventListener('click',  ()=> {
 
     overlay.style.display = 'none';
     more.classList.remove('more-splash');
@@ -119,3 +123,23 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+class Option
+{
+  constructor(height=200,width=400,bg="red",fontSize=40,textAlign=4)
+  {
+    this.height=height;
+    this.width=width;
+    this.bg=bg;
+    this.fontSize=fontSize;
+    this.textAlign=textAlign;
+  }
+  createDiv()
+  {
+    var div=document.createElement("div");
+    div.style.cssText=`height:${this.height}px;width:${this.width}px;font-size:${this.fontSize}px;background:${this.bg};text-aling:${this.textAlign}px`;
+    div.textContent="Это абсолютно любой текст";
+    document.body.appendChild(div);
+  }
+}
+var option=new Option();
+option.createDiv();
