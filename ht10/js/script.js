@@ -92,7 +92,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   admodel.hideTabContent(1);
 
-  info.addEventListener("click",(e)=>{admodel.showTabEvent(e);});
+  info.addEventListener("click", (e) => {
+    admodel.showTabEvent(e);
+  });
 
   admodel.setClock('timer', admodel.deadline);
 
@@ -114,7 +116,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  close.addEventListener('click',  ()=> {
+  close.addEventListener('click', () => {
 
     overlay.style.display = 'none';
     more.classList.remove('more-splash');
@@ -123,23 +125,3 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-class Option
-{
-  constructor(height=200,width=400,bg="red",fontSize=40,textAlign=4)
-  {
-    this.height=height;
-    this.width=width;
-    this.bg=bg;
-    this.fontSize=fontSize;
-    this.textAlign=textAlign;
-  }
-  createDiv()
-  {
-    var div=document.createElement("div");
-    div.style.cssText=`height:${this.height}px;width:${this.width}px;font-size:${this.fontSize}px;background:${this.bg};text-aling:${this.textAlign}px`;
-    div.textContent="Это абсолютно любой текст";
-    document.body.appendChild(div);
-  }
-}
-var option=new Option();
-option.createDiv();
