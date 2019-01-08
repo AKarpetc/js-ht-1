@@ -27,3 +27,17 @@ rub.addEventListener("input", () => {
     });
 
 });
+
+try
+{
+   // console.log(bla);
+    throw new Error("Сука бля сука бля сука бля ");
+
+}catch(error)
+{
+    console.log(error);
+    console.log(error.message);
+}finally
+{
+    console.log("Всегда нахуй");
+}
