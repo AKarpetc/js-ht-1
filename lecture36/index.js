@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 let User = function (name, age) {
     let userName = name;
     let userAge = age;
@@ -30,3 +30,27 @@ var user = new User("Вася", 15);
 user.say();
 user.setName("Говно");
 user.say();
+*/
+
+
+
+/*
+let number = 1;
+
+(function () {
+    let number = 1;
+    number = 2;
+    console.log(number++);
+
+}());*/
+
+
+let user = (function () {
+    return {
+        sayHello: function () {
+            console.log('Hello');
+        }
+    };
+
+}());
+console.log(user.sayHello());
