@@ -46,6 +46,7 @@ let number = 1;
 
 
 let user = (function () {
+    
     return {
         sayHello: function () {
             console.log('Hello');
@@ -53,4 +54,5 @@ let user = (function () {
     };
 
 }());
+
 console.log(user.sayHello());
